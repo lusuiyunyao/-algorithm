@@ -1,0 +1,24 @@
+
+'''
+计算两个字符串最长的公共长度
+X=x1,x2,...xm
+Y=y1,y2,...ym
+X和Y最大的公共长度为f(m,n)
+if xm==ym f(m,n)=f(m-1,n-1)+1
+else xm!=ym  f(m,n)=max(f(m-1,n),f(m,n-1))
+
+'''
+
+def GetSameLength(str1Arr, str2Arr):
+    if len(str1Arr)==0 or len(str2Arr)==0:
+        return 0
+    else:
+        a=str1Arr[0]
+        b=str2Arr[0]
+        if(a==b):
+            return GetSameLength(str1Arr[1:],str2Arr[1:])+1
+        else:
+            return max(GetSameLength(str1Arr[1:],str2Arr),GetSameLength(str1Arr,str2Arr[1:]))
+
+
+print(GetSameLength(list('try'),list('ittryittr')))
